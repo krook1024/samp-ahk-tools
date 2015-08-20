@@ -18,6 +18,8 @@
 ; with this program; if not, write to the Free Software Foundation, Inc.,
 ; 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+#IfWinActive ahk_exe gta_sa.exe
+
 ;Coordinates of the boards on the map (that we know of)
 global boardPositions := [ [2183.4619,-1516.1774,23.6058,0]
 , [2413.3479,-1426.4052,23.6897,0]
@@ -147,21 +149,14 @@ destroyBlip(blipID)
         addMessageToChatWindow("{D3212D}The icons have already been loaded.")
         return
     }
-	addMessageToChatWindow("LOL")
-	
     gtaHandle := OpenHandleByName(windowNameOfSAMP)
     
-	addMessageToChatWindow("LOL2")
-	
     ;for some reason, you need to call this once for this thing to work the first time
     ;type = 3 (MARKER_DISPLAY_BOTH)
-    callWithParams(gtaHandle, 0x583820, [["i", 4], ["i", 0], ["i", 0], ["i", 0], ["i", 0], ["i", 3], ["i", 8] ], true)
-       
-	addMessageToChatWindow("LOL3 omg " windowNameOfSAMP)
+    ;callWithParams(gtaHandle, 0x583820, [["i", 4], ["i", 0], ["i", 0], ["i", 0], ["i", 0], ["i", 3], ["i", 8] ], true)
 	
     For row, subArray in boardPositions
     {
-		addMessageToChatWindow("omg " subArray[1] " " subArray[2] " " subArray[3])
         callWithParams(gtaHandle, 0x583820, [["i", 4], ["i", FloatToHex(subArray[1])], ["i", FloatToHex(subArray[2])], ["i", subArray[3]], ["i", 0], ["i", 3], ["i", 8] ], true)
          
         ;this sleep is needed so that the mapicon can be initialized properly before the rest of the loop runs
@@ -179,8 +174,6 @@ destroyBlip(blipID)
         Memory_Write(gtaHandle, 0xBA86F0 + (subArray[4] * 0x28) + 0, 0xFFFF00FF ) ;dwColorID
     }
 	
-	addMessageToChatWindow("lel")
-    
     iconsLoaded := true
     showGameText("~g~Loaded", 3000, 4)
 

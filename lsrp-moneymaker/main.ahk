@@ -20,6 +20,7 @@
 #NoEnv
 #SingleInstance force
 
+
 #include gui.ahk
 #include SAMP.ahk
 #include MemoryFunctions.ahk
