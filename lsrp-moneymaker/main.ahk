@@ -19,6 +19,7 @@
 #UseHook
 #NoEnv
 #SingleInstance force
+#NoTrayIcon
 
 
 #include gui.ahk
