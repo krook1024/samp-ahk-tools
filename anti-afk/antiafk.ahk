@@ -39,8 +39,6 @@ l::
 		return
 	}
 
-	chatcheck("l")
-
 	addmessagetochatwindow("{FF0000}antiafk - off")
 	pressed := 0
 	settimer, antiafk, delete
