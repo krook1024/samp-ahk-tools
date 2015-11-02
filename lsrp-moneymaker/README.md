@@ -27,3 +27,9 @@ The second module is the *moneymaker*, which handles the actual exploitation. Wh
 
 ### Important advice
 **Don't be AFK while this application is running.** Moneymaker manipulates the memory of San Andreas Multiplayer to send commands without toggling your chatbox. If GTA:SA is minimized while Moneymaker is active, **the server can flag you** because you send commands without actually being in-game. **This can lead to a ban for using an AFK-bot.** In fact, it has already happened to one of us. Don't be stupid. Stay in-game.
+
+Authors
+-------
+
+* krook (moneymaker)
+* 6i7kh (boardtracker, gui)
