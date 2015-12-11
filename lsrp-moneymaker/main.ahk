@@ -16,15 +16,16 @@
 ; with this program; if not, write to the Free Software Foundation, Inc.,
 ; 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+SetWorkingDir %A_ScriptDir%/lsrp_moneymaker
+
 #UseHook
 #NoEnv
 #SingleInstance force
 #NoTrayIcon
 
-
-#include gui.ahk
-#include SAMP.ahk
-#include MemoryFunctions.ahk
-#include boardtracker.ahk
-#include cmd_flooder.ahk
-#include gui_handler.ahk
+#include lsrp_moneymaker/gui.ahk
+#include lsrp_moneymaker/SAMP.ahk
+#include lsrp_moneymaker/MemoryFunctions.ahk
+#include lsrp_moneymaker/boardtracker.ahk
+#include lsrp_moneymaker/cmd_flooder.ahk
+#include lsrp_moneymaker/gui_handler.ahk
