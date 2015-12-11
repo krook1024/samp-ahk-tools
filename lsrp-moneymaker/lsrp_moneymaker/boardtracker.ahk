@@ -42,8 +42,8 @@ global boardPositions := [ [2183.4619,-1516.1774,23.6058,0]
 , [-1827.6444,-1618.3636,22.7213,0]
 , [-621.3506,-512.9147,25.5178,0]
 , [-620.7587,-523.2788,25.5178,0]
-, [-620.8422,-535.3288,25.5234,0]
-]
+, [-620.8422,-535.3288,25.5234,0] ]
+
 
 ;Some magic numbers
 global windowNameOfSAMP := "GTA:SA:MP"
@@ -150,7 +150,7 @@ destroyBlip(blipID)
      
     if( iconsLoaded == true )
     {
-        addMessageToChatWindow("{D3212D}The icons have already been loaded.")
+        addMessageToChatWindow("{D3212D}* (( The icons have already been loaded. ))")
         return
     }
     gtaHandle := OpenHandleByName(windowNameOfSAMP)
@@ -199,7 +199,7 @@ return
     {
         distance := sqrt((pPos[1]-subArray[1])**2+(pPos[2]-subArray[2])**2)
         
-        if( distance <= 3.0 && subArray[4] != 0  )
+        if( distance <= 20.0 && subArray[4] != 0  )
         {
             nearBoard := row
         }
@@ -208,14 +208,14 @@ return
 
     if( nearBoard == 0 )
     {
-        addMessageToChatWindow("{D3212D}You are not near any of the boards.")
+        addMessageToChatWindow("{D3212D}* (( You are not near any of the boards. ))")
         return
     }
         
     ;destroy the blip & the reference to the blip
     destroyBlip(boardPositions[nearBoard][4])
     boardPositions[nearBoard][4] := 0
-    addMessageToChatWindow("{00FF00}Position marked as visited.")
+    addMessageToChatWindow("{00FF00}* (( Position marked as visited. ))")
     
     CloseHandle(gtaHandle)
     
@@ -230,7 +230,7 @@ return
     
     if( iconsLoaded == false )
     {
-        addMessageToChatWindow("{D3212D}The icons haven't been loaded yet.")
+        addMessageToChatWindow("{D3212D}* (( The icons haven't been loaded yet. ))")
         return
     }
     
@@ -248,6 +248,6 @@ return
     
     CloseHandle(gtaHandle)
     
-    addMessageToChatWindow("{00FF00}All blips have been successfully destroyed.")
+    addMessageToChatWindow("{00FF00}* (( All blips have been successfully destroyed. ))")
     iconsLoaded := false
 return
