@@ -25,26 +25,27 @@ SetWorkingDir %A_ScriptDir%
 
 global terminate = 0
 global count = 0
-global started = 0
+global started := false
 
 start()
 {
-	started = 1
+	started := true
 	count ++
 	sendChatMessage("/delivercar")
 }
 
 stop(dropoff = 0)
 {
+	started := false
 	terminate = 1
 	if(dropoff = 1)
 	{
 		sendChatMessage("/dropoff")
-		addMessageToChatWindow("{F5F5F5}Money making has been {ff0000}stopped{F5F5F5}, /dropoff used.")
+		addMessageToChatWindow("{DFF3FF}* (( Money making has been stopped, /dropoff used. ))")
 	}
 	else
 	{
-		addMessageToChatWindow("{F5F5F5}Money making has been {ff0000}paused{F5F5F5}.")
+		addMessageToChatWindow("{DFF3FF}* (( Money making has been paused. ))")
 	}
 	terminate = 1
 }
@@ -53,8 +54,6 @@ stop(dropoff = 0)
 	if(!isInChat())
 	{
 		terminate = 0
-		terminate = 0
-		addMessageToChatWindow("{F5F5F5}Have fun, {ADFF2F}moneymaker{F5F5F5}.")
 		Loop
 		{
 			if terminate = 1
@@ -63,30 +62,31 @@ stop(dropoff = 0)
 			}
 			else
 			{
-				if(isPlayerDriver())
+				if(isPlayerInAnyVehicle() && isPlayerDriver())
 				{
 					start()
-					
 					if(getVehicleModelName() = "Sultan")
 					{
-						addMessageToChatWindow("{FFFFFF}[MONEY] {ADFF2F}Count:{FFFFFF} " count " | {ADFF2F}Sultan:{FFFFFF} approx. $" count*5800)
+						addMessageToChatWindow("{DFF3FF}* (( Count: " count " - Sultan: $" count*5800 " ))")
 					}
 					else
 					{
-						addMessageToChatWindow("{FFFFFF}[MONEY] {ADFF2F}Count:{FFFFFF} " count " |  {ADFF2F}Cheetah:{FFFFFF} approx. $" count*6300)
+						addMessageToChatWindow("{DFF3FF}* (( Count: " count " - Cheetah: $" count*6800 " ))")
 					}
 					
 					IniRead, Sleep2, MONEY.ini, Main, Wait
 					Sleep := Sleep2*1000
 					Sleep, %Sleep%
 				}
+				else
+					return
 			}
 		}
 	}
 return
 
 ^2::
-	if(!isInChat())
+	if(!isInChat() && started)
 	{
 		stop()
 	}
