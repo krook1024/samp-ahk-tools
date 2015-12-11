@@ -32,7 +32,7 @@ Gui, Font, S25, Verdana
 Gui, Add, Text, x102 y9 w240 h40 +Center, Moneymaker
 Gui, Font, S12, Verdana
 Gui, Font, S10, Verdana
-Gui, Add, Text, x102 y49 w240 h20 +Center, Copyright 2015 Seedjo
+Gui, Add, Text, x102 y49 w240 h20 +Center, Copyright 2015-16 © Seedjo
 Gui, Font, S6, Verdana
 Gui, Font, S8, Verdana
 Gui, Add, Text, x102 y69 w240 h70 +Center, This software comes with ABSOLUTELY NO WARRANTY. This is free software`, and you are welcome to redistribute it under certain conditions (see the attached LICENSE file for more details).
