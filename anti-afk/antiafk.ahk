@@ -10,17 +10,13 @@ return
 antiafk:
 	all := commands.MaxIndex()	
 	random, random, 1, %all%
-	;addmessagetochatwindow("ikszde2: " commands[random] " - " A_MSec)
 	sendchatmessage(commands[random])
 return
 
 #ifwinactive GTA:SA:MP
-k::
+~k::
 	if(isinchat())
-	{
-		send, k
 		return
-	}
 	
 	if(pressed = 0)
 	{
@@ -32,12 +28,9 @@ k::
 	}
 return
 
-l::
+~l::
 	if(isinchat())
-	{
-		send, l
 		return
-	}
 
 	addmessagetochatwindow("{FF0000}antiafk - off")
 	pressed := 0
